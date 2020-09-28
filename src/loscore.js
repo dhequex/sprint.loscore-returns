@@ -99,8 +99,14 @@ class LoScore {
   | OBJECTS
   |~~~~~~~~~~
   * */
-  extend(obj) {
-    // YOUR CODE HERE
+  extend(...obj) {
+    let output = obj[0];
+    for (let i = 1; i < obj.length; i++) {
+      this.each(obj[i], (value, key) => {
+        output[key] = value;
+      });
+    }
+    return output;
   }
 
   /**
