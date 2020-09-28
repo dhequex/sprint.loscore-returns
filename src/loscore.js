@@ -10,7 +10,7 @@ class LoScore {
   * */
   uniq(array) {
     // YOUR CODE HERE
-    let output = [];
+    const output = [];
     for (let i = 0; i < array.length; i++) {
       if (!output.includes(array[i])) {
         output.push(array[i]);
@@ -37,7 +37,7 @@ class LoScore {
   }
 
   map(collection, iteratee) {
-    let output = [];
+    const output = [];
     this.each(collection, (...args) => {
       output.push(iteratee(...args));
     });
@@ -51,7 +51,7 @@ class LoScore {
   }
 
   reject(collection, test) {
-    let output = [];
+    const output = [];
     this.filter(collection, (...args) => {
       if (!test(...args)) {
         output.push(...args);
@@ -62,8 +62,8 @@ class LoScore {
 
   reduce(collection, iterator, accumulator) {
     if (accumulator === undefined) {
-      let output = collection[0];
-      let newCollection = collection.slice(1, collection.length);
+      const output = collection[0];
+      const newCollection = collection.slice(1, collection.length);
 
       this.each(newCollection, (...args) => {
         output = iterator(output, ...args);
@@ -81,29 +81,22 @@ class LoScore {
 
   every(collection, test) {
     if (collection.length === 0) return true;
-    let newCollection = [];
-    /*   if(test === undefined) {
-      for (let i = 0; i < collection.length; i++){
-        if(collection[i]){
-          newCollection.push(true)
-        } else{
-          newCollection.push(false)
-      }
-    }
-   }else*/
-
+    const newCollection = [];
     for (let i = 0; i < collection.length; i++) {
-      if (test(collection[i]) === collection[i]) {
-        if (collection[i]) {
-          newCollection.push(true);
-        } else {
-          newCollection.push(false);
-        }
+      if (test === undefined) {
+        newCollection.push(collection[i]);
       } else {
-        newCollection.push(test(collection[i]));
+        if (test(collection[i]) === collection[i]) {
+          if (collection[i]) {
+            newCollection.push(true);
+          } else {
+            newCollection.push(false);
+          }
+        } else {
+          newCollection.push(test(collection[i]));
+        }
       }
     }
-
     return this.reduce(newCollection, (result, bool) => {
       if (bool === undefined) {
         return result;
