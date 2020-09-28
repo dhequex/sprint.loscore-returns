@@ -115,7 +115,16 @@ class LoScore {
   * */
 
   once(func) {
-    // YOUR CODE HERE
+    let counter = 0;
+    let value;
+    return function() {
+      if (counter < 1) {
+        value = func();
+        counter++;
+        return value;
+      }
+      return value;
+    };
   }
 
   memoize(func) {
