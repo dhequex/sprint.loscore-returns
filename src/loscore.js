@@ -80,11 +80,28 @@ class LoScore {
   }
 
   every(collection, test) {
-    let output = true;
-    if (collection.length == 0) return true;
+    if (collection.length === 0) return true;
     let newCollection = [];
+    /*   if(test === undefined) {
+      for (let i = 0; i < collection.length; i++){
+        if(collection[i]){
+          newCollection.push(true)
+        } else{
+          newCollection.push(false)
+      }
+    }
+   }else*/
+
     for (let i = 0; i < collection.length; i++) {
-      newCollection.push(test(collection[i]));
+      if (test(collection[i]) === collection[i]) {
+        if (collection[i]) {
+          newCollection.push(true);
+        } else {
+          newCollection.push(false);
+        }
+      } else {
+        newCollection.push(test(collection[i]));
+      }
     }
 
     return this.reduce(newCollection, (result, bool) => {
