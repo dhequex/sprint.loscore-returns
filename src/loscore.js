@@ -50,10 +50,33 @@ class LoScore {
     return result;
   }
 
-  reject(collection, test) {}
+  reject(collection, test) {
+    let output = [];
+    this.filter(collection, (...args) => {
+      if (!test(...args)) {
+        output.push(...args);
+      }
+    });
+    return output;
+  }
 
   reduce(collection, iterator, accumulator) {
-    // YOUR CODE HERE
+    if (accumulator === undefined) {
+      let output = collection[0];
+      let newCollection = collection.slice(1, collection.length);
+
+      this.each(newCollection, (...args) => {
+        output = iterator(output, ...args);
+      });
+      return output;
+    }
+
+    let output = accumulator;
+
+    this.each(collection, (...args) => {
+      output = iterator(output, ...args);
+    });
+    return output;
   }
 
   every() {
