@@ -10,7 +10,7 @@ class LoScore {
   * */
   uniq(array) {
     // YOUR CODE HERE
-    let output = [];
+    const output = [];
     for (let i = 0; i < array.length; i++) {
       if (!output.includes(array[i])) {
         output.push(array[i]);
@@ -37,7 +37,7 @@ class LoScore {
   }
 
   map(collection, iteratee) {
-    let output = [];
+    const output = [];
     this.each(collection, (...args) => {
       output.push(iteratee(...args));
     });
@@ -51,7 +51,7 @@ class LoScore {
   }
 
   reject(collection, test) {
-    let output = [];
+    const output = [];
     this.filter(collection, (...args) => {
       if (!test(...args)) {
         output.push(...args);
@@ -63,7 +63,7 @@ class LoScore {
   reduce(collection, iterator, accumulator) {
     if (accumulator === undefined) {
       let output = collection[0];
-      let newCollection = collection.slice(1, collection.length);
+      const newCollection = collection.slice(1, collection.length);
 
       this.each(newCollection, (...args) => {
         output = iterator(output, ...args);
@@ -81,7 +81,7 @@ class LoScore {
 
   every(collection, test) {
     if (collection.length === 0) return true;
-    let newCollection = [];
+    const newCollection = [];
     for (let i = 0; i < collection.length; i++) {
       if (test === undefined) {
         newCollection.push(collection[i]);
@@ -110,7 +110,7 @@ class LoScore {
   |~~~~~~~~~~
   * */
   extend(...obj) {
-    let output = obj[0];
+    const output = obj[0];
     for (let i = 1; i < obj.length; i++) {
       this.each(obj[i], (value, key) => {
         output[key] = value;
@@ -138,7 +138,7 @@ class LoScore {
   }
 
   memoize(func) {
-    let list = {};
+    const list = {};
     return function(input) {
       if (list.hasOwnProperty(input)) {
         return list[input];
@@ -150,7 +150,7 @@ class LoScore {
   }
 
   invoke(collection, functionOrKey) {
-    let output = [];
+    const output = [];
 
     if (typeof functionOrKey === "string") {
       for (let i = 0; i < collection.length; i++) {
