@@ -128,7 +128,15 @@ class LoScore {
   }
 
   memoize(func) {
-    // YOUR CODE HERE
+    let list = {};
+    return function(input) {
+      if (list.hasOwnProperty(input)) {
+        return list[input];
+      }
+      list[input] = func(input);
+
+      return list[input];
+    };
   }
 
   invoke(collection, functionOrKey) {
