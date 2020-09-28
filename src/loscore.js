@@ -79,8 +79,20 @@ class LoScore {
     return output;
   }
 
-  every() {
-    // YOUR CODE HERE
+  every(collection, test) {
+    let output = true;
+    if (collection.length == 0) return true;
+    let newCollection = [];
+    for (let i = 0; i < collection.length; i++) {
+      newCollection.push(test(collection[i]));
+    }
+
+    return this.reduce(newCollection, (result, bool) => {
+      if (bool === undefined) {
+        return result;
+      }
+      return result && bool;
+    });
   }
 
   /**
