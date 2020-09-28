@@ -11,12 +11,12 @@ class LoScore {
   uniq(array) {
     // YOUR CODE HERE
     let output = [];
-    array.foreach(item => {
-      if (!output.include(item)) {
-        output.push(item);
+    for (let i = 0; i < array.length; i++) {
+      if (!output.includes(array[i])) {
+        output.push(array[i]);
       }
-    })
-    return output
+    }
+    return output;
   }
 
   /**
