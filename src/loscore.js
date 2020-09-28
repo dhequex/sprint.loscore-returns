@@ -10,6 +10,13 @@ class LoScore {
   * */
   uniq(array) {
     // YOUR CODE HERE
+    let output = [];
+    array.foreach(item => {
+      if (!output.include(item)) {
+        output.push(item);
+      }
+    })
+    return output
   }
 
   /**
